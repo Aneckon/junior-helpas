@@ -1,3 +1,95 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 @import './reset.scss';
+
+body {
+  position: relative;
+  height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #fff;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    width: 300px;
+    height: 300px;
+    background: #d3f261;
+    box-shadow: 0px 0px 101px 121px #d3f261;
+    border-radius: 50%;
+    z-index: -1;
+  }
+  &::before {
+    content: '';
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    width: 300px;
+    height: 00px;
+    background: #d3f261;
+    box-shadow: 0px 0px 101px 121px #d3f261;
+    border-radius: 50%;
+    z-index: -1;
+  }
+}
+
+.panel {
+  width: 680px;
+  text-align: center;
+  padding: 25px;
+  background: #f6f6f67a;
+  border-radius: 20px;
+
+  @media (max-width: 1024px) {
+    width: 480px;
+  }
+
+  @media (max-width: 768px) {
+    width: 380px;
+  }
+
+  @media (max-width: 425px) {
+    width: 320px;
+  }
+}
+
+.button {
+  padding: 12px 64px;
+  background: rgba(30, 30, 30, 0.8);
+  border-radius: 10px;
+
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 30px;
+  color: #fff;
+
+  transition: 0.3s;
+
+  &:hover {
+    background: rgba(30, 30, 30, 0.5);
+  }
+
+  @media (max-width: 1024px) {
+    padding: 10px 60px;
+    font-size: 20px;
+  }
+  @media (max-width: 768px) {
+    font-size: 18px;
+    line-height: 25px;
+  }
+  @media (max-width: 425px) {
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+
+input {
+  box-shadow: 0px 0px 2px rgba(30, 30, 30, 0.7);
+  border-radius: 5px;
+}

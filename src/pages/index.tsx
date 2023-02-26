@@ -1,11 +1,19 @@
+import React from 'react';
 import Head from 'next/head';
-import Image from 'next/image';
-import { Inter } from 'next/font/google';
+
+import { useRouter } from 'next/router';
+
 import styles from '@/styles/Home.module.scss';
 
-const inter = Inter({ subsets: ['latin'] });
-
 export default function Home() {
+  const router = useRouter();
+
+  React.useEffect(() => {
+    if (!localStorage.getItem('token')) {
+      router.push('/welcome');
+    }
+  }, [router]);
+
   return (
     <>
       <Head>
