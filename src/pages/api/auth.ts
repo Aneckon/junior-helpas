@@ -17,7 +17,7 @@ export const auth = ({ data, link, setResponseServer, setErrorServer }: authProp
     })
     .then((response) => {
       if (response) {
-        toast.success('Успішно зареєструвалися', {
+        toast.success(`Успішно ${link === '/register' ? 'зареєструвалися' : 'увійшли'}`, {
           position: 'top-right',
           autoClose: 1000,
           hideProgressBar: false,

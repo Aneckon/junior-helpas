@@ -41,7 +41,10 @@ export default function Login() {
         router.push('/');
       }, 1500);
     }
-  }, [responseServer]);
+    if (localStorage.getItem('token')) {
+      router.push('/');
+    }
+  }, [responseServer, router]);
 
   return (
     <>
