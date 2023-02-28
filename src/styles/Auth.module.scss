@@ -4,7 +4,6 @@
   align-items: center;
   justify-content: center;
 
-  
   img {
     margin-bottom: 10px;
   }
@@ -68,6 +67,31 @@
       font-size: 14px;
       line-height: 15px;
       color: rgba(30, 30, 30, 0.6);
+    }
+  }
+}
+
+.link {
+  margin: 10px 0;
+  a {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: rgba(30, 30, 30, 0.7);
+
+    transition: 0.3s;
+    &:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 1440px) {
+      font-size: 14px;
+      line-height: 18px;
+    }
+    @media (max-width: 1024px) {
+      font-size: 12px;
+      line-height: 16px;
     }
   }
 }

@@ -83,7 +83,7 @@ export default function Login() {
               {errors.password && <span>Введіть пароль</span>}
               {errorServer && <span>{errorServer.password}</span>}
             </div>
-            <div className='link'>
+            <div className={styles.link}>
               <Link href="/register">У вас немає акаунт</Link>
             </div>
             <Button type="submit" className="button">
