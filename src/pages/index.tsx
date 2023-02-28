@@ -22,10 +22,10 @@ export default function Home() {
           <Sidebar />
 
           <section className={styles.home}>
-            {user ? (
+           {/* {user ? (  */}
               <div className="container">
                 <h1 className="title">
-                  Вітаю <span>{user.nickname}</span>
+                  Вітаю  {/* <span>{user.nickname}</span>*/}
                 </h1>
                 <div className={styles.content}>
                   <Checklist />
@@ -35,9 +35,9 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-            ) : (
+            {/* ) : (
               <Loader />
-            )}
+            )} */}
           </section>
         </main>
       {/* </Provider> */}
