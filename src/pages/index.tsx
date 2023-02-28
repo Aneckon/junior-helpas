@@ -17,7 +17,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Provider user={user} setUser={setUser}>
+      {/* <Provider user={user} setUser={setUser}> */}
         <main className="main">
           <Sidebar />
 
@@ -40,7 +40,7 @@ export default function Home() {
             )}
           </section>
         </main>
-      </Provider>
+      {/* </Provider> */}
     </>
   );
 }
