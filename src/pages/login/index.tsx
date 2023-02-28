@@ -28,7 +28,9 @@ export default function Login() {
   const router = useRouter();
 
   const [errorServer, setErrorServer] = React.useState<any>(null);
-  const [responseServer, setResponseServer] = React.useState(null);
+  const [responseServer, setResponseServer] = React.useState<any>(null);
+
+  console.log(responseServer);
 
   const onSubmitLogin: SubmitHandler<Inputs> = (data) => {
     auth({ link: '/login', setErrorServer, data, setResponseServer });
@@ -36,7 +38,7 @@ export default function Login() {
 
   React.useEffect(() => {
     if (responseServer !== null) {
-      localStorage.setItem('token', responseServer);
+      localStorage.setItem('token', JSON.stringify(responseServer));
       setTimeout(() => {
         router.push('/');
       }, 1500);
@@ -81,7 +83,7 @@ export default function Login() {
               {errors.password && <span>Введіть пароль</span>}
               {errorServer && <span>{errorServer.password}</span>}
             </div>
-            <div className={styles.link}>
+            <div className='link'>
               <Link href="/register">У вас немає акаунт</Link>
             </div>
             <Button type="submit" className="button">

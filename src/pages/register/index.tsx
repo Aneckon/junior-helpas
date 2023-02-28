@@ -38,7 +38,7 @@ export default function Register() {
 
   React.useEffect(() => {
     if (responseServer !== null) {
-      localStorage.setItem('token', responseServer);
+      localStorage.setItem('token', JSON.stringify(responseServer));
       setTimeout(() => {
         router.push('/');
       }, 1500);

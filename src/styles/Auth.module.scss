@@ -1,4 +1,10 @@
 .auth {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  
   img {
     margin-bottom: 10px;
   }
@@ -27,7 +33,7 @@
   position: relative;
   text-align: left;
 
-  span{
+  span {
     font-size: 12px;
     position: absolute;
     top: 3px;
@@ -62,28 +68,6 @@
       font-size: 14px;
       line-height: 15px;
       color: rgba(30, 30, 30, 0.6);
-    }
-  }
-}
-
-.link {
-  margin: 10px 0;
-
-  a {
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 20px;
-    color: rgba(30, 30, 30, 0.7);
-
-    transition: 0.3s;
-    &:hover {
-      text-decoration: underline;
-    }
-
-    @media (max-width: 425px) {
-      font-size: 14px;
-      line-height: 18px;
     }
   }
 }

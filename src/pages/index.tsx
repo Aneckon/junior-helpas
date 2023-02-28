@@ -1,18 +1,12 @@
 import React from 'react';
 import Head from 'next/head';
 
-import { useRouter } from 'next/router';
+import { Checklist, Loader, Provider, Reviews, Sidebar, WhyUs } from '@/components';
 
 import styles from '@/styles/Home.module.scss';
 
 export default function Home() {
-  const router = useRouter();
-
-  React.useEffect(() => {
-    if (!localStorage.getItem('token')) {
-      router.push('/welcome');
-    }
-  }, [router]);
+  const [user, setUser] = React.useState<any>(null);
 
   return (
     <>
@@ -22,7 +16,31 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={styles.main}>Hello world!</main>
+
+      <Provider user={user} setUser={setUser}>
+        <main className="main">
+          <Sidebar />
+
+          <section className={styles.home}>
+            {user ? (
+              <div className="container">
+                <h1 className="title">
+                  Вітаю <span>{user.nickname}</span>
+                </h1>
+                <div className={styles.content}>
+                  <Checklist />
+                  <div className={styles.content__left}>
+                    <Reviews />
+                    <WhyUs />
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <Loader />
+            )}
+          </section>
+        </main>
+      </Provider>
     </>
   );
 }

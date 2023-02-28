@@ -1,0 +1,99 @@
+.reviews {
+  max-width: 300px;
+  width: 100%;
+  text-align: left;
+
+  margin-bottom: 50px;
+
+  @media (max-width: 1440px) {
+    margin-bottom: 30px;
+  }
+
+  @media (max-width: 1024px) {
+    margin-bottom: 50px;
+  }
+
+  @media (max-width: 768px) {
+    margin-bottom: 0;
+    max-width: 250px;
+  }
+
+  @media (max-width: 475px) {
+    max-width: 100%;
+  }
+
+  .hed {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+
+    @media (max-width: 1440px) {
+      margin-bottom: 10px;
+    }
+
+    @media (max-width: 1024px) {
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: 768px) {
+      margin-bottom: 15px;
+    }
+
+    div {
+      a {
+        font-size: 12px;
+
+        @media (max-width: 768px) {
+          font-size: 10px;
+        }
+      }
+    }
+  }
+
+  li {
+    margin-bottom: 20px;
+
+    @media (max-width: 768px) {
+      margin-bottom: 10px;
+    }
+    a {
+      display: flex;
+
+      img {
+        margin-right: 15px;
+
+        @media (max-width: 1440px) {
+          width: 35px;
+          height: 35px;
+          margin-right: 10px;
+        }
+      }
+      .nick {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 19px;
+        color: #1e1e1e;
+        margin-bottom: 5px;
+
+        @media (max-width: 1440px) {
+          font-size: 14px;
+          margin-bottom: 2px;
+        }
+      }
+      .descriptions {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 15px;
+        color: #1e1e1e;
+
+        @media (max-width: 768px) {
+          font-size: 10px;
+          line-height: 14px;
+        }
+      }
+    }
+  }
+}
