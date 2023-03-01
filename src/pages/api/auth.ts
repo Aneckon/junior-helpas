@@ -29,6 +29,16 @@ export const auth = ({ data, link, setResponseServer, setErrorServer }: authProp
       setResponseServer(response.data);
     })
     .catch((error) => {
-      setErrorServer(error.response.data);
+      setErrorServer(error.response?.data);
+    });
+};
+
+export const logout = () => {
+  axios
+    .post(`${process.env.HOST_URL}/user/logout`, {
+      refreshToken: JSON.parse(localStorage.getItem('token') || '').refreshToken,
+    })
+    .then((response) => {
+      localStorage.clear();
     });
 };

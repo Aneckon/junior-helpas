@@ -30,7 +30,7 @@ export const UploadAvatar: FC<UploadAvatarProps> = ({ user, setUser }) => {
       <p className={styles.input__title}>Створити аватарку</p>
       <div className={styles.input}>
         <label htmlFor="file-input">
-          {user ? (
+          {user.image ? (
             <Image
               width="100"
               height="100"

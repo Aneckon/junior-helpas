@@ -105,7 +105,7 @@ export default function Profile() {
 
       <Provider user={user} setUser={setUser}>
         <main className="main">
-          <Sidebar />
+          <Sidebar user={user} />
 
           <section className="section">
             {user ? (
@@ -236,7 +236,10 @@ export default function Profile() {
                         type="text"
                       />
                     </div>
-                    <Button disabled={!isDirty && !isValid} className={`button ${styles.button__mobile}`} type="submit">
+                    <Button
+                      disabled={!isDirty && !isValid}
+                      className={`button ${styles.button__mobile}`}
+                      type="submit">
                       Зберегти
                     </Button>
                   </div>

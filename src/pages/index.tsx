@@ -20,7 +20,7 @@ export default function Home() {
 
       <Provider user={user} setUser={setUser}>
         <main className="main">
-          <Sidebar />
+          <Sidebar user={user} />
 
           <section className="section">
             {user ? (
@@ -29,7 +29,7 @@ export default function Home() {
                   Вітаю <span>{user.nickname}</span>
                 </h1>
                 <div className={styles.content}>
-                  <Checklist />
+                  <Checklist user={user} />
                   <div className={styles.content__left}>
                     <Reviews />
                     <WhyUs />

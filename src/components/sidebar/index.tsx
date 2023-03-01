@@ -1,20 +1,33 @@
-import React from 'react';
+import React, { FC } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
+import { UserProps } from '../types';
+import { Loader } from '../loader';
+import { logout } from '@/pages/api/auth';
+
 import styles from '@/styles/Sidebar.module.scss';
 
 import logo from '@/assets/logo.svg';
-import user from '@/assets/user.svg';
+import userAvatar from '@/assets/user.svg';
 
-export const Sidebar = () => {
+interface SidebarProps {
+  user: UserProps | null;
+}
+
+export const Sidebar: FC<SidebarProps> = ({ user }) => {
   const router = useRouter();
 
   const [menu, setMenu] = React.useState(false);
 
   const handleMenuOpen = () => {
     setMenu(!menu);
+  };
+
+  const handleLogout = () => {
+    logout();
+    // console.log(JSON.parse(localStorage.getItem('token') || '').refreshToken);
   };
 
   return (
@@ -118,7 +131,7 @@ export const Sidebar = () => {
           </li>
         </ul>
         <ul>
-          <li>
+          <li onClick={handleLogout}>
             <Link href="/welcome">
               <svg
                 width="28"
@@ -143,10 +156,21 @@ export const Sidebar = () => {
             </Link>
           </li>
           <li>
-            <Link href="/profile">
-              <Image src={user} alt="user" />
-              <p>Профіль</p>
-            </Link>
+            {user ? (
+              <Link href="/profile">
+                <Image
+                  width={100}
+                  height={100}
+                  src={
+                    user?.image === null ? userAvatar : `${process.env.URL}/static/${user?.image}`
+                  }
+                  alt="user"
+                />
+                <p>Профіль</p>
+              </Link>
+            ) : (
+              <Loader />
+            )}
           </li>
         </ul>
       </nav>
