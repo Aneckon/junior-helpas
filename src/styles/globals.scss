@@ -85,11 +85,6 @@ body {
   }
 }
 
-input {
-  box-shadow: 0px 0px 2px rgba(30, 30, 30, 0.7);
-  border-radius: 5px;
-}
-
 .main {
   position: absolute;
   left: 0;
@@ -113,7 +108,7 @@ input {
     height: 700px;
   }
 
-  @media (max-width: 475px){
+  @media (max-width: 475px) {
     max-width: 350px;
     width: 100%;
   }
@@ -149,13 +144,13 @@ input {
   @media (max-width: 1440px) {
     max-width: 900px;
   }
-  @media (max-width: 1024px){
+  @media (max-width: 1024px) {
     max-width: 700px;
   }
-  @media (max-width: 924px){
+  @media (max-width: 924px) {
     max-width: 800px;
   }
-  @media (max-width: 475px){
+  @media (max-width: 475px) {
     max-width: 400px;
   }
 }
@@ -172,10 +167,10 @@ input {
     font-size: 32px;
     margin-bottom: 40px;
   }
-  @media (max-width: 1024px){
+  @media (max-width: 1024px) {
     margin-bottom: 30px;
   }
-  @media (max-width: 924px){
+  @media (max-width: 924px) {
     margin-bottom: 10px;
     font-size: 28px;
   }
@@ -209,7 +204,7 @@ input {
       font-size: 14px;
       line-height: 18px;
     }
-    @media (max-width: 1024px){
+    @media (max-width: 1024px) {
       font-size: 12px;
       line-height: 16px;
     }
@@ -226,12 +221,79 @@ input {
   @media (max-width: 1440px) {
     font-size: 20px;
   }
-  @media (max-width: 1024px){
+  @media (max-width: 1024px) {
     font-size: 18px;
     line-height: 22px;
   }
-  @media (max-width: 768px){
+  @media (max-width: 768px) {
     font-size: 16px;
     line-height: 20px;
+  }
+}
+
+.section {
+  padding: 140px 0;
+  position: relative;
+  height: 100%;
+
+  @media (max-width: 1440px) {
+    padding: 80px 0;
+  }
+  @media (max-width: 1024px) {
+    padding: 85px 0;
+  }
+  @media (max-width: 924px) {
+    padding: 80px 0;
+  }
+  @media (max-width: 768px) {
+    padding: 20px 0;
+  }
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  text-align: left;
+
+  span {
+    font-size: 12px;
+    position: absolute;
+    top: 3px;
+    right: 0;
+    color: #ff7875;
+  }
+
+  label {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: rgba(30, 30, 30, 0.7);
+  }
+
+  input {
+    max-width: 280px;
+    width: 100%;
+    margin: 5px 0 15px 0;
+
+    padding: 12px 15px;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 15px;
+    color: rgba(30, 30, 30, 0.6);
+
+    box-shadow: 0px 0px 2px rgba(30, 30, 30, 0.7);
+    border-radius: 5px;
+
+    &::placeholder {
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 15px;
+      color: rgba(30, 30, 30, 0.6);
+    }
   }
 }

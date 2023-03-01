@@ -30,8 +30,6 @@ export default function Login() {
   const [errorServer, setErrorServer] = React.useState<any>(null);
   const [responseServer, setResponseServer] = React.useState<any>(null);
 
-  console.log(responseServer);
-
   const onSubmitLogin: SubmitHandler<Inputs> = (data) => {
     auth({ link: '/login', setErrorServer, data, setResponseServer });
   };
@@ -63,7 +61,7 @@ export default function Login() {
           <h1>Логін</h1>
 
           <form onSubmit={handleSubmit(onSubmitLogin)}>
-            <div className={styles.input}>
+            <div className="input">
               <label>Емайл</label>
               <input
                 {...register('email', { required: true })}
@@ -73,7 +71,7 @@ export default function Login() {
               {errors.email && <span>Введіть емайл</span>}
               {errorServer && <span>{errorServer.user}</span>}
             </div>
-            <div className={styles.input}>
+            <div className="input">
               <label>Пароль</label>
               <input
                 {...register('password', { required: true })}

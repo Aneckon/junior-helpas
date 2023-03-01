@@ -143,7 +143,7 @@ export const Sidebar = () => {
             </Link>
           </li>
           <li>
-            <Link href="/progile">
+            <Link href="/profile">
               <Image src={user} alt="user" />
               <p>Профіль</p>
             </Link>

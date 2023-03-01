@@ -2,10 +2,11 @@ import React from 'react';
 import { useRouter } from 'next/router';
 
 import { profile } from '@/pages/api/profile';
+import { UserProps } from '../types';
 
 interface ProviderProps {
-  user: void;
-  setUser: (user: void) => void;
+  user: UserProps | null;
+  setUser: (user: UserProps | null) => void;
   children: JSX.Element;
 }
 
@@ -22,7 +23,9 @@ export const Provider = ({ user, setUser, children }: ProviderProps) => {
       profile({ setErrorServer });
     }
     if (user === null) {
-      setUser(JSON.parse(localStorage.getItem('user') || ''));
+      setTimeout(() => {
+        setUser(JSON.parse(localStorage.getItem('user') || ''));
+      }, 100);
     }
   }, [router, user]);
 

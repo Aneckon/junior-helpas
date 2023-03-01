@@ -2,11 +2,12 @@ import React from 'react';
 import Head from 'next/head';
 
 import { Checklist, Loader, Provider, Reviews, Sidebar, WhyUs } from '@/components';
+import { UserProps } from '@/components/types';
 
 import styles from '@/styles/Home.module.scss';
 
 export default function Home() {
-  const [user, setUser] = React.useState<any>(null);
+  const [user, setUser] = React.useState<UserProps | null>(null);
 
   return (
     <>
@@ -21,11 +22,11 @@ export default function Home() {
         <main className="main">
           <Sidebar />
 
-          <section className={styles.home}>
-           {user ? ( 
+          <section className="section">
+            {user ? (
               <div className="container">
                 <h1 className="title">
-                  Вітаю  <span>{user.nickname}</span>
+                  Вітаю <span>{user.nickname}</span>
                 </h1>
                 <div className={styles.content}>
                   <Checklist />

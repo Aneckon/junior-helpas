@@ -63,7 +63,7 @@ export default function Register() {
           <h1>Реєстрація</h1>
 
           <form onSubmit={handleSubmit(onSubmitRegister)}>
-            <div className={styles.input}>
+            <div className="input">
               <label>Емайл</label>
               <input
                 {...register('email', { required: true })}
@@ -73,7 +73,7 @@ export default function Register() {
               {errors.email && <span>Введіть емайл</span>}
               {errorServer && <span>{errorServer.message}</span>}
             </div>
-            <div className={styles.input}>
+            <div className="input">
               <label>Логін</label>
               <input
                 {...register('nickname', { required: true })}
@@ -82,7 +82,7 @@ export default function Register() {
               />
               {errors.nickname && <span>Введіть логін</span>}
             </div>
-            <div className={styles.input}>
+            <div className="input">
               <label>Пароль</label>
               <input
                 {...register('password', { required: true })}

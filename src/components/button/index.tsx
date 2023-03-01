@@ -5,11 +5,12 @@ interface ButtonProps {
   className: string;
   click?: () => void;
   type: 'button' | 'submit' | undefined;
+  disabled?: boolean | undefined;
 }
 
-export const Button: FC<ButtonProps> = ({ type, children, className, click }) => {
+export const Button: FC<ButtonProps> = ({ type, disabled, children, className, click }) => {
   return (
-    <button type={type} className={className} onClick={click}>
+    <button disabled={disabled} type={type} className={className} onClick={click}>
       {children}
     </button>
   );
