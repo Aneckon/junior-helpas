@@ -1,5 +1,6 @@
-import { ProfileUploadProps } from '@/components/types';
 import axios from 'axios';
+
+import { ProfileUploadProps } from '@/components/types';
 
 interface ProfileProps {
   setErrorServer: (err: null) => void;
@@ -19,8 +20,6 @@ export const profile = ({ setErrorServer }: ProfileProps) => {
 };
 
 export const profileUpload = ({ image, data, id, setErrorServer, setUser }: ProfileUploadProps) => {
-  console.log(id);
-
   axios
     .put(
       `${process.env.HOST_URL}/user/addInfo`,
@@ -35,17 +34,11 @@ export const profileUpload = ({ image, data, id, setErrorServer, setUser }: Prof
         aboutme: data?.aboutme,
         telegram: data?.telegram,
         linkedin: data?.linkedin,
-        experience: data?.experience,
         github: data?.github,
         portfolio: data?.portfolio,
         phone: data?.phone,
         salary: data?.salary,
         image: image,
-      },
-      {
-        headers: {
-          'Content-type': 'multipart/form-data',
-        },
       },
     )
     .then((response) => {

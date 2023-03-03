@@ -1,12 +1,12 @@
 import React from 'react';
 import Head from 'next/head';
 
-import { Checklist, Loader, Provider, Reviews, Sidebar, WhyUs } from '@/components';
+import { Loader, Provider, Sidebar } from '@/components';
 import { UserProps } from '@/components/types';
 
-import styles from '@/styles/page/Home.module.scss';
+import styles from '@/styles/page/CreateVacancy.module.scss';
 
-export default function Home() {
+export default function CreateVacancy() {
   const [user, setUser] = React.useState<UserProps | null>(null);
 
   return (
@@ -25,16 +25,7 @@ export default function Home() {
           <section className="section">
             {user ? (
               <div className="container">
-                <h1 className="title">
-                  Вітаю <span>{user.nickname}</span>
-                </h1>
-                <div className={styles.content}>
-                  <Checklist user={user} />
-                  <div className={styles.content__left}>
-                    <Reviews />
-                    <WhyUs />
-                  </div>
-                </div>
+                <h2 className="subtitle">Створити ваканцію</h2>
               </div>
             ) : (
               <Loader />

@@ -4,24 +4,29 @@ import Image from 'next/image';
 
 import { profileUpload } from '@/pages/api/profile';
 
-import styles from '@/styles/UploadAvatar.module.scss';
+import styles from '@/styles/components/UploadAvatar.module.scss';
 
 interface UploadAvatarProps {
   user: { image: string };
   setUser: (user: null) => void;
+  link?: string;
 }
 
-export const UploadAvatar: FC<UploadAvatarProps> = ({ user, setUser }) => {
+export const UploadAvatar: FC<UploadAvatarProps> = ({ user, setUser, link }) => {
   const [errorServer, setErrorServer] = React.useState<any>(null);
 
   const onChangeAddPhoto = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files?.length) {
-      profileUpload({
-        id: JSON.parse(localStorage.getItem('user') || '').id,
-        image: e.target.files[0],
-        setErrorServer,
-        setUser,
-      });
+      {
+        link !== 'createcv'
+          ? profileUpload({
+              id: JSON.parse(localStorage.getItem('user') || '').id,
+              image: e.target.files[0],
+              setErrorServer,
+              setUser,
+            })
+          : '';
+      }
     }
   };
 

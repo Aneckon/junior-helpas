@@ -1,0 +1,34 @@
+.item {
+  max-width: 60px;
+  height: 30px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+
+  input {
+    max-width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0 5px;
+    overflow: auto;
+  }
+  .delete {
+    cursor: pointer;
+    width: 10px;
+    height: 10px;
+
+    position: absolute;
+    right: -3px;
+    top: -3px;
+    border-radius: 50%;
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      background: url('../../assets/icon/remove.svg') no-repeat center;
+    }
+  }
+}

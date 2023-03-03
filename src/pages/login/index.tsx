@@ -10,7 +10,7 @@ import { useRouter } from 'next/router';
 import { Button } from '@/components';
 import { auth } from '@/pages/api/auth';
 
-import styles from '@/styles/Auth.module.scss';
+import styles from '@/styles/page/Auth.module.scss';
 
 import logo from '@/assets/logo.svg';
 

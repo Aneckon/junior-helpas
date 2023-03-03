@@ -7,7 +7,7 @@ import { UserProps } from '../types';
 import { Loader } from '../loader';
 import { logout } from '@/pages/api/auth';
 
-import styles from '@/styles/Sidebar.module.scss';
+import styles from '@/styles/components/Sidebar.module.scss';
 
 import logo from '@/assets/logo.svg';
 import userAvatar from '@/assets/user.svg';
@@ -27,12 +27,13 @@ export const Sidebar: FC<SidebarProps> = ({ user }) => {
 
   const handleLogout = () => {
     logout();
-    // console.log(JSON.parse(localStorage.getItem('token') || '').refreshToken);
   };
 
   return (
     <div className={styles.sidebar}>
-      <Image onClick={handleMenuOpen} src={logo} alt="logo" />
+      <Link href="/">
+        <Image onClick={handleMenuOpen} src={logo} alt="logo" />
+      </Link>
       <nav className={menu ? styles.menu__active : ''}>
         <ul>
           <li>
@@ -61,7 +62,7 @@ export const Sidebar: FC<SidebarProps> = ({ user }) => {
             </Link>
           </li>
           <li>
-            <Link href="/create">
+            <Link href="/documets" className={router.asPath === '/documets' ? styles.active : ''}>
               <svg
                 width="30"
                 height="30"
@@ -94,7 +95,9 @@ export const Sidebar: FC<SidebarProps> = ({ user }) => {
             </Link>
           </li>
           <li>
-            <Link href="/vacantions">
+            <Link
+              href="/vacantions"
+              className={router.asPath === '/vacantions' ? styles.active : ''}>
               <svg
                 width="28"
                 height="28"

@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
-import styles from '@/styles/Reviews.module.scss';
+import styles from '@/styles/components/Reviews.module.scss';
 
 import user from '@/assets/user.svg';
 

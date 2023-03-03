@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 import { UserProps } from '../types';
 
-import styles from '@/styles/Checklist.module.scss';
+import styles from '@/styles/components/Checklist.module.scss';
 
 interface ChecklistProps {
   user: UserProps | null;

@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 
 import { Button } from '@/components';
 
-import styles from '@/styles/Welcome.module.scss';
+import styles from '@/styles/page/Welcome.module.scss';
 
 export default function Welcome() {
   const router = useRouter();

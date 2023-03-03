@@ -1,21 +1,23 @@
 import React from 'react';
 import Head from 'next/head';
 
+import uuid from 'react-uuid';
+
 import { useForm, SubmitHandler } from 'react-hook-form';
 
-import { Button, Loader, Provider, Sidebar, UploadAvatar } from '@/components';
+import { Button, Loader, Provider, Sidebar, SkillsItem, UploadAvatar } from '@/components';
 import { profileUpload } from '@/pages/api/profile';
 
-import { InputProps, UserProps } from '@/components/types';
+import { InputProgileProps, UserProps } from '@/components/types';
 
-import styles from '@/styles/Profile.module.scss';
+import styles from '@/styles/page/Profile.module.scss';
 
 export default function Profile() {
   const {
     register,
     handleSubmit,
     formState: { isValid, isDirty },
-  } = useForm<InputProps>({
+  } = useForm<InputProgileProps>({
     mode: 'onChange',
   });
 
@@ -23,7 +25,6 @@ export default function Profile() {
 
   const [position, setPosition] = React.useState('');
   const [education, setEducation] = React.useState('');
-  const [skills, setSkills] = React.useState({ name: '' });
   const [name, setName] = React.useState('');
   const [lastname, setLastname] = React.useState('');
   const [city, setCity] = React.useState('');
@@ -35,9 +36,26 @@ export default function Profile() {
   const [portfolio, setPortfolio] = React.useState('');
   const [salary, setSalary] = React.useState('');
 
+  const [skills, setSkills] = React.useState([{ id: uuid(), name: '' }]);
+
+  const addSkillsKey = (e: { key?: string; preventDefault: () => void }) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      setSkills((item) => [...item, { id: uuid(), name: '' }]);
+    }
+    if (e.key === 'Tab') {
+      e.preventDefault();
+      setSkills((item) => [...item, { id: uuid(), name: '' }]);
+    }
+  };
+
+  const addSkills = () => {
+    setSkills((item) => [...item, { id: uuid(), name: '' }]);
+  };
+
   const [errorServer, setErrorServer] = React.useState<any>(null);
 
-  const onSubmitUploadProfile: SubmitHandler<InputProps> = (data) => {
+  const onSubmitUploadProfile: SubmitHandler<InputProgileProps> = (data) => {
     if (
       user?.position !== position ||
       user?.education !== education ||
@@ -80,7 +98,7 @@ export default function Profile() {
     if (user) {
       setPosition(user.position ?? '');
       setEducation(user.education ?? '');
-      setSkills(user.skills ?? '');
+      setSkills(user.skills ?? [{ id: uuid(), name: '' }]);
       setName(user.name ?? '');
       setLastname(user.lastname ?? '');
       setCity(user.city ?? '');
@@ -137,13 +155,24 @@ export default function Profile() {
                     </div>
                     <div className="input">
                       <label className={styles.input__title}>Навички</label>
-                      <input
-                        {...register('skills')}
-                        // value={skills}
-                        // onChange={(e) => setSkills(e.target.value)}
-                        type="text"
-                      />
+                      <div className="skills">
+                        <div onClick={addSkills}>
+                          <input className="input__item" onKeyDown={addSkillsKey} type="button" />
+                        </div>
+                        <div className="item">
+                          {skills.map((item) => (
+                            <SkillsItem
+                              key={item.id}
+                              item={item}
+                              skills={skills}
+                              setSkills={setSkills}
+                              addSkills={addSkillsKey}
+                            />
+                          ))}
+                        </div>
+                      </div>
                     </div>
+
                     <Button disabled={!isDirty && !isValid} className="button" type="submit">
                       Зберегти
                     </Button>

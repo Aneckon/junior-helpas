@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styles from '@/styles/WhyUs.module.scss';
+import styles from '@/styles/components/WhyUs.module.scss';
 
 export const WhyUs = () => {
   return (

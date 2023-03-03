@@ -1,12 +1,18 @@
 import React from 'react';
 import Head from 'next/head';
 
-import { Checklist, Loader, Provider, Reviews, Sidebar, WhyUs } from '@/components';
+import { CreateItem, Loader, Provider, Sidebar } from '@/components';
 import { UserProps } from '@/components/types';
 
-import styles from '@/styles/page/Home.module.scss';
+import styles from '@/styles/page/Documets.module.scss';
 
-export default function Home() {
+import resume from '@/assets/icon/resume.svg';
+import document from '@/assets/icon/document.svg';
+import { useRouter } from 'next/router';
+
+export default function Documets() {
+  const router = useRouter();
+
   const [user, setUser] = React.useState<UserProps | null>(null);
 
   return (
@@ -25,15 +31,18 @@ export default function Home() {
           <section className="section">
             {user ? (
               <div className="container">
-                <h1 className="title">
-                  Вітаю <span>{user.nickname}</span>
-                </h1>
+                <h1 className="title">Створити документ</h1>
                 <div className={styles.content}>
-                  <Checklist user={user} />
-                  <div className={styles.content__left}>
-                    <Reviews />
-                    <WhyUs />
-                  </div>
+                  <CreateItem
+                    icon={resume}
+                    name="Створити резюме"
+                    link={`${router.pathname}/create-resume/1`}
+                  />
+                  <CreateItem
+                    icon={document}
+                    name="Створити ваканцію"
+                    link={`${router.pathname}/create-vacancy/1`}
+                  />
                 </div>
               </div>
             ) : (

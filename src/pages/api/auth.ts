@@ -39,6 +39,8 @@ export const logout = () => {
       refreshToken: JSON.parse(localStorage.getItem('token') || '').refreshToken,
     })
     .then((response) => {
-      localStorage.clear();
+      setTimeout(() => {
+        localStorage.clear();
+      }, 100);
     });
 };
