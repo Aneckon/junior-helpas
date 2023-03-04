@@ -60,7 +60,7 @@ export const Sidebar: FC<SidebarProps> = ({ user }) => {
             </Link>
           </li>
           <li>
-            <Link href="/documents" className={router.asPath === '/documets' ? styles.active : ''}>
+            <Link href="/documents" className={router.asPath === '/documents' ? styles.active : ''}>
               <svg
                 width="30"
                 height="30"
