@@ -31,8 +31,7 @@ export const createResume = ({ setErrorServer, resumeData }: ResumeProps) => {
     )
     .then((response) => {
       downloadjs(response.data, 'resume.pdf', 'text/plain');
-      // localStorage.setItem('resume', JSON.stringify(response.data));
-      console.log(response);
+      localStorage.setItem('resume', JSON.stringify(response.config.data));
     })
     .catch((error) => {
       setErrorServer(error.response?.data);
