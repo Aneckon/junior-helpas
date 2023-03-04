@@ -16,12 +16,12 @@ import {
   SkillsItem,
   Tabs,
 } from '@/components';
+import { createResume } from '@/pages/api/resume';
 import { InputResumeProps, UserProps } from '@/components/types';
 
 import styles from '@/styles/page/CreateResume.module.scss';
 
 import addJob from '@/assets/icon/addJobs.svg';
-import { createResume } from '@/pages/api/resume';
 
 export default function CreateResumeId() {
   const {
@@ -143,6 +143,9 @@ export default function CreateResumeId() {
         user,
         setErrorServer,
       });
+      if (localStorage.getItem('resume')) {
+        router.push('/documents');
+      }
     }
   };
 

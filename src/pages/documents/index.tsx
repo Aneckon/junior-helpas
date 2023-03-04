@@ -4,13 +4,13 @@ import Head from 'next/head';
 import { CreateItem, Loader, Provider, Sidebar } from '@/components';
 import { UserProps } from '@/components/types';
 
-import styles from '@/styles/page/Documets.module.scss';
+import styles from '@/styles/page/Documents.module.scss';
 
 import resume from '@/assets/icon/resume.svg';
 import document from '@/assets/icon/document.svg';
 import { useRouter } from 'next/router';
 
-export default function Documets() {
+export default function Documents() {
   const router = useRouter();
 
   const [user, setUser] = React.useState<UserProps | null>(null);

@@ -31,9 +31,7 @@ export const Sidebar: FC<SidebarProps> = ({ user }) => {
 
   return (
     <div className={styles.sidebar}>
-      <Link href="/">
-        <Image onClick={handleMenuOpen} src={logo} alt="logo" />
-      </Link>
+      <Image onClick={handleMenuOpen} src={logo} alt="logo" />
       <nav className={menu ? styles.menu__active : ''}>
         <ul>
           <li>
@@ -62,7 +60,7 @@ export const Sidebar: FC<SidebarProps> = ({ user }) => {
             </Link>
           </li>
           <li>
-            <Link href="/documets" className={router.asPath === '/documets' ? styles.active : ''}>
+            <Link href="/documents" className={router.asPath === '/documets' ? styles.active : ''}>
               <svg
                 width="30"
                 height="30"

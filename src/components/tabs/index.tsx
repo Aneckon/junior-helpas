@@ -12,16 +12,16 @@ export const Tabs = () => {
     <nav className={styles.tabs}>
       <ul>
         <li className={router.query.id === '1' ? styles.active : ''}>
-          <Link href="/documets/create-resume/1">1</Link>
+          <Link href="/documents/create-resume/1">1</Link>
         </li>
         <li className={router.query.id === '2' ? styles.active : ''}>
-          <Link href="/documets/create-resume/2">2</Link>
+          <Link href="/documents/create-resume/2">2</Link>
         </li>
         <li className={router.query.id === '3' ? styles.active : ''}>
-          <Link href="/documets/create-resume/3">3</Link>
+          <Link href="/documents/create-resume/3">3</Link>
         </li>
         <li className={router.query.id === '4' ? styles.active : ''}>
-          <Link href="/documets/create-resume/4">4</Link>
+          <Link href="/documents/create-resume/4">4</Link>
         </li>
       </ul>
     </nav>
