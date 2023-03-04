@@ -165,7 +165,7 @@ export default function CreateResumeId() {
           <section className="section document">
             {user ? (
               <div className="container">
-                <Tabs />
+                <Tabs link="create-resume" />
                 <div className={styles.resume}>
                   <h2 className="subtitle">Створити резюме</h2>
 
