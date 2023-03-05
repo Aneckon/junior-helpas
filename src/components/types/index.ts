@@ -80,7 +80,7 @@ export interface InputResumeProps {
 }
 
 export interface ResumeProps {
-  resumeData?: {
+  data?: {
     name: string;
     lastname: string;
     city: string;
@@ -103,4 +103,43 @@ export interface ResumeProps {
   };
   setErrorServer: (err: null) => void;
   user: UserProps | null;
+}
+
+export interface InputVacancyProps {
+  id: string;
+  userId: string;
+  nameCompany: string;
+  descriptionsCompany: string;
+  specialization: string;
+  experience: string;
+  salary: string;
+  briefDescription: string;
+  detailedInformation: string;
+  city: string;
+  country: string;
+  englishLevel: string;
+  phone: string;
+  telegram: string;
+  linkedin: string;
+}
+
+export interface VacancyProps {
+  data?: {
+    id: string | undefined | string[];
+    userId: string;
+    nameCompany: string;
+    descriptionsCompany: string;
+    specialization: string;
+    experience: string;
+    salary: string;
+    briefDescription: string;
+    detailedInformation: string;
+    city: string;
+    country: string;
+    englishLevel: string;
+    phone: string;
+    telegram: string;
+    linkedin: string;
+  };
+  setErrorServer: (err: null) => void;
 }

@@ -1,19 +1,38 @@
 import React from 'react';
 import Head from 'next/head';
 
-import { CreateItem, Loader, Provider, Sidebar } from '@/components';
-import { UserProps } from '@/components/types';
+import { useRouter } from 'next/router';
+
+import { CreateItem, Loader, Provider, Sidebar, VacancyItem } from '@/components';
+import { InputVacancyProps, UserProps, VacancyProps } from '@/components/types';
 
 import styles from '@/styles/page/Documents.module.scss';
 
 import resume from '@/assets/icon/resume.svg';
 import document from '@/assets/icon/document.svg';
-import { useRouter } from 'next/router';
+import { getVacancyItem } from '../api/vacancy';
 
 export default function Documents() {
   const router = useRouter();
 
   const [user, setUser] = React.useState<UserProps | null>(null);
+  const [vacancy, setVacancy] = React.useState([]);
+
+  React.useEffect(() => {
+    if (!localStorage.getItem('vacancy')) {
+      getVacancyItem();
+    }
+    if (user || router) {
+      if (
+        localStorage.getItem('vacancy') ||
+        localStorage.getItem('vacancy')?.length ||
+        localStorage.getItem('vacancy-edit')?.length ||
+        localStorage.getItem('vacancy-edit')
+      ) {
+        setVacancy(JSON.parse(localStorage.getItem('vacancy') || ''));
+      }
+    }
+  }, [user, router]);
 
   return (
     <>
@@ -43,6 +62,27 @@ export default function Documents() {
                     name="Створити ваканцію"
                     link={`${router.pathname}/create-vacancy/1`}
                   />
+                </div>
+                <h2 className="subtitle">Створенні ваканції</h2>
+                <div className={styles.vacancy}>
+                  {vacancy.length
+                    ? vacancy.map(
+                        (item: {
+                          id: string;
+                          nameCompany: string;
+                          descriptionsCompany: string;
+                        }) => (
+                          <VacancyItem
+                            key={item.id}
+                            vacancy={vacancy}
+                            name={item.nameCompany}
+                            descriptions={item.descriptionsCompany}
+                            id={item.id}
+                            setVacancy={setVacancy}
+                          />
+                        ),
+                      )
+                    : 'немає ваканцій'}
                 </div>
               </div>
             ) : (

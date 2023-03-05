@@ -87,44 +87,10 @@ export default function CreateResumeId() {
     ]);
   };
 
-  const [resumeData, setResumeData] = React.useState({
-    name: '',
-    lastname: '',
-    position: '',
-    education: '',
-    skills: skills,
-    experience: experienceList,
-    city: '',
-    aboutme: '',
-    telegram: '',
-    linkedin: '',
-    github: '',
-    portfolio: '',
-    phone: '',
-    salary: '',
-  });
-
   const onSubmitCreateResume: SubmitHandler<InputResumeProps> = (data) => {
-    setResumeData({
-      name: data.name,
-      lastname: data.lastname,
-      position: data.position,
-      education: data.education,
-      skills: skills,
-      experience: experienceList,
-      city: data.city,
-      aboutme: data.aboutme,
-      telegram: data.telegram,
-      linkedin: data.linkedin,
-      github: data.github,
-      portfolio: data.portfolio,
-      phone: data.phone,
-      salary: data.salary,
-    });
-
     if (done === true) {
       createResume({
-        resumeData: {
+        data: {
           name: data.name,
           lastname: data.lastname,
           position: data.position,

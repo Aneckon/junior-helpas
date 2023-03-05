@@ -4,7 +4,7 @@ import downloadjs from 'downloadjs';
 
 import { ResumeProps } from '@/components/types';
 
-export const createResume = ({ setErrorServer, resumeData }: ResumeProps) => {
+export const createResume = ({ setErrorServer, data }: ResumeProps) => {
   const userImage = JSON.parse(localStorage.getItem('user') || '').image;
   axios
     .post(
@@ -12,20 +12,20 @@ export const createResume = ({ setErrorServer, resumeData }: ResumeProps) => {
       {
         image: userImage,
         email: JSON.parse(localStorage.getItem('user') || '').email,
-        name: resumeData?.name,
-        lastname: resumeData?.lastname,
-        position: resumeData?.position,
-        education: resumeData?.education,
-        skills: resumeData?.skills,
-        experience: resumeData?.experience,
-        city: resumeData?.city,
-        aboutme: resumeData?.aboutme,
-        telegram: resumeData?.telegram,
-        linkedin: resumeData?.linkedin,
-        github: resumeData?.github,
-        portfolio: resumeData?.portfolio,
-        phone: resumeData?.phone,
-        salary: resumeData?.salary,
+        name: data?.name,
+        lastname: data?.lastname,
+        position: data?.position,
+        education: data?.education,
+        skills: data?.skills,
+        experience: data?.experience,
+        city: data?.city,
+        aboutme: data?.aboutme,
+        telegram: data?.telegram,
+        linkedin: data?.linkedin,
+        github: data?.github,
+        portfolio: data?.portfolio,
+        phone: data?.phone,
+        salary: data?.salary,
       },
       { responseType: 'blob' },
     )

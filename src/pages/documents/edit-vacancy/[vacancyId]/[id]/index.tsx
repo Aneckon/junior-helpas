@@ -1,24 +1,18 @@
 import React from 'react';
 import Head from 'next/head';
 
-import uuid from 'react-uuid';
-
 import { useForm, SubmitHandler } from 'react-hook-form';
 
 import { useRouter } from 'next/router';
 
 import { Button, Loader, Provider, Sidebar, Tabs } from '@/components';
-import { createVacancy } from '@/pages/api/vacancy';
+import { editVacancy } from '@/pages/api/vacancy';
 import { InputVacancyProps, UserProps } from '@/components/types';
 
 import styles from '@/styles/page/CreateVacancy.module.scss';
 
-export default function CreateVacancy() {
-  const {
-    register,
-    handleSubmit,
-    formState: { isValid, isDirty },
-  } = useForm<InputVacancyProps>({
+export default function EditVacancy() {
+  const { register, handleSubmit } = useForm<InputVacancyProps>({
     mode: 'onChange',
   });
 
@@ -29,25 +23,35 @@ export default function CreateVacancy() {
 
   const [done, setDone] = React.useState(false);
 
-  const [nameCompany, setNameCompany] = React.useState('');
-  const [descriptionsCompany, setDescriptionsCompany] = React.useState('');
-  const [specialization, setSpecialization] = React.useState('');
-  const [experience, setExperience] = React.useState('');
-  const [salary, setSalary] = React.useState('');
-  const [briefDescription, setBriefDescription] = React.useState('');
-  const [detailedInformation, setDetailedInformation] = React.useState('');
-  const [city, setCity] = React.useState('');
-  const [country, setCountry] = React.useState('');
-  const [englishLevel, setEnglishLevel] = React.useState('');
-  const [phone, setPhone] = React.useState('');
-  const [telegram, setTelegram] = React.useState('');
-  const [linkedin, setLinkedin] = React.useState('');
+  const [vacancyEdit, setVacancyEdit] = React.useState(
+    typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('vacancy-edit') || '') : {},
+  );
 
-  const onSubmitCreateVacancy: SubmitHandler<InputVacancyProps> = (data) => {
+  const [nameCompany, setNameCompany] = React.useState(vacancyEdit.nameCompany || '');
+  const [descriptionsCompany, setDescriptionsCompany] = React.useState(
+    vacancyEdit.descriptionsCompany || '',
+  );
+  const [specialization, setSpecialization] = React.useState(vacancyEdit.specialization || '');
+  const [experience, setExperience] = React.useState(vacancyEdit.experience || '');
+  const [salary, setSalary] = React.useState(vacancyEdit.salary || '');
+  const [briefDescription, setBriefDescription] = React.useState(
+    vacancyEdit.briefDescription || '',
+  );
+  const [detailedInformation, setDetailedInformation] = React.useState(
+    vacancyEdit.detailedInformation || '',
+  );
+  const [city, setCity] = React.useState(vacancyEdit.city || '');
+  const [country, setCountry] = React.useState(vacancyEdit.country || '');
+  const [englishLevel, setEnglishLevel] = React.useState(vacancyEdit.englishLevel || '');
+  const [phone, setPhone] = React.useState(vacancyEdit.phone || '');
+  const [telegram, setTelegram] = React.useState(vacancyEdit.telegram || '');
+  const [linkedin, setLinkedin] = React.useState(vacancyEdit.linkedin || '');
+
+  const onSubmitEditVacancy: SubmitHandler<InputVacancyProps> = (data) => {
     if (done === true) {
-      createVacancy({
+      editVacancy({
         data: {
-          id: uuid(),
+          id: router.query.vacancyId,
           userId: JSON.parse(localStorage.getItem('token') || '').userId,
           nameCompany: data.nameCompany,
           descriptionsCompany: data.descriptionsCompany,
@@ -87,13 +91,13 @@ export default function CreateVacancy() {
           <section className="section">
             {user ? (
               <div className="container">
-                <Tabs link="create-vacancy" />
+                <Tabs link={`edit-vacancy/${router.query.vacancyId}`} />
                 <div className={styles.vacancy}>
                   <h2 className="subtitle">Створити ваканцію</h2>
 
                   {router.query.id === '1' && (
                     <div className={styles.content}>
-                      <form onSubmit={handleSubmit(onSubmitCreateVacancy)} className={styles.form}>
+                      <form onSubmit={handleSubmit(onSubmitEditVacancy)} className={styles.form}>
                         <div className={styles.item}>
                           <div className="input">
                             <label className={styles.input__title}>Назва компанії</label>
@@ -113,7 +117,13 @@ export default function CreateVacancy() {
                           </div>
                           <Button
                             click={() =>
-                              router.push(router.pathname, router.pathname.replace('[id]', '2'))
+                              router.push(
+                                router.pathname,
+                                router.pathname.replace(
+                                  '[vacancyId]/[id]',
+                                  `${router.query.vacancyId}/2`,
+                                ),
+                              )
                             }
                             className="button"
                             type="submit">
@@ -127,7 +137,7 @@ export default function CreateVacancy() {
                   {router.query.id === '2' && (
                     <div className={styles.content}>
                       <form
-                        onSubmit={handleSubmit(onSubmitCreateVacancy)}
+                        onSubmit={handleSubmit(onSubmitEditVacancy)}
                         className={`${styles.form} ${styles.form__flex}`}>
                         <div className={styles.item}>
                           <div className="input">
@@ -159,7 +169,13 @@ export default function CreateVacancy() {
                           </div>
                           <Button
                             click={() =>
-                              router.push(router.pathname, router.pathname.replace('[id]', '3'))
+                              router.push(
+                                router.pathname,
+                                router.pathname.replace(
+                                  '[vacancyId]/[id]',
+                                  `${router.query.vacancyId}/3`,
+                                ),
+                              )
                             }
                             className="button"
                             type="submit">
@@ -183,7 +199,7 @@ export default function CreateVacancy() {
 
                   {router.query.id === '3' && (
                     <div className={styles.content}>
-                      <form onSubmit={handleSubmit(onSubmitCreateVacancy)} className={styles.form}>
+                      <form onSubmit={handleSubmit(onSubmitEditVacancy)} className={styles.form}>
                         <div className={styles.item}>
                           <div className="input">
                             <label className={styles.input__title}>Детальна інформація</label>
@@ -196,7 +212,13 @@ export default function CreateVacancy() {
                           </div>
                           <Button
                             click={() =>
-                              router.push(router.pathname, router.pathname.replace('[id]', '4'))
+                              router.push(
+                                router.pathname,
+                                router.pathname.replace(
+                                  '[vacancyId]/[id]',
+                                  `${router.query.vacancyId}/4`,
+                                ),
+                              )
                             }
                             className="button"
                             type="submit">
@@ -210,7 +232,7 @@ export default function CreateVacancy() {
                   {router.query.id === '4' && (
                     <div className={styles.content}>
                       <form
-                        onSubmit={handleSubmit(onSubmitCreateVacancy)}
+                        onSubmit={handleSubmit(onSubmitEditVacancy)}
                         className={`${styles.form} ${styles.form__flex}`}>
                         <div className={styles.item}>
                           <div className="input">
@@ -241,7 +263,7 @@ export default function CreateVacancy() {
                             />
                           </div>
                           <Button click={() => setDone(true)} className="button" type="submit">
-                            Створити
+                            Зберегти
                           </Button>
                         </div>
                         <div className={styles.item}>
