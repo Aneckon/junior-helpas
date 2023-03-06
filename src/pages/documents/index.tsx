@@ -4,13 +4,13 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 
 import { CreateItem, Loader, Provider, Sidebar, VacancyItem } from '@/components';
-import { InputVacancyProps, UserProps, VacancyProps } from '@/components/types';
+import { getVacancyListItem, getVacancyItem } from '../api/vacancy';
+import { UserProps } from '@/components/types';
 
 import styles from '@/styles/page/Documents.module.scss';
 
 import resume from '@/assets/icon/resume.svg';
 import document from '@/assets/icon/document.svg';
-import { getVacancyItem } from '../api/vacancy';
 
 export default function Documents() {
   const router = useRouter();
@@ -20,12 +20,14 @@ export default function Documents() {
 
   React.useEffect(() => {
     if (user || router) {
-      if (!localStorage.getItem('vacancy')) {
-        getVacancyItem();
+      if (!localStorage.getItem('vacancy-list-user')) {
+        getVacancyListItem();
       }
-      if (localStorage.getItem('vacancy')) {
+      if (localStorage.getItem('vacancy-list-user')) {
         setVacancy(
-          typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('vacancy') || '') : [],
+          typeof window !== 'undefined'
+            ? JSON.parse(localStorage.getItem('vacancy-list-user') || '')
+            : [],
         );
       }
     }

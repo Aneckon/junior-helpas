@@ -21,21 +21,27 @@ interface VacancyItem {
 export const VacancyItem: FC<VacancyItem> = ({ vacancy, name, descriptions, id, setVacancy }) => {
   const router = useRouter();
 
-  const handleDeleteItem = () => {
+  const handleDeleteItem = (e: { stopPropagation: () => void }) => {
+    e.stopPropagation();
     removeVacancyItem(id);
     vacancy.filter((item: { id: string }) => item.id !== id);
     setVacancy(vacancy.filter((item) => item.id !== id));
   };
 
-  const handleEditItem = () => {
+  const handleEditItem = (e: { stopPropagation: () => void }) => {
+    e.stopPropagation();
     getVacancyEditItem(id);
     setTimeout(() => {
       router.push(`${router.pathname}/edit-vacancy/${id}/1`);
     }, 100);
   };
 
+  const handleVacancyPage = () => {
+    router.push(`/vacancy/${id}`);
+  };
+
   return (
-    <div className={styles.item}>
+    <div onClick={handleVacancyPage} className={styles.item}>
       <div onClick={handleDeleteItem} className={styles.delete}>
         <Image src={Delete} alt="delete" />
       </div>

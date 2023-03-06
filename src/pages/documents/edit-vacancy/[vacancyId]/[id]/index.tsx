@@ -27,6 +27,7 @@ export default function EditVacancy() {
     typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('vacancy-edit') || '') : {},
   );
 
+  const [webSite, setWebSite] = React.useState(vacancyEdit.webSite || '');
   const [nameCompany, setNameCompany] = React.useState(vacancyEdit.nameCompany || '');
   const [descriptionsCompany, setDescriptionsCompany] = React.useState(
     vacancyEdit.descriptionsCompany || '',
@@ -53,6 +54,7 @@ export default function EditVacancy() {
         data: {
           id: router.query.vacancyId,
           userId: JSON.parse(localStorage.getItem('token') || '').userId,
+          webSite: data.webSite,
           nameCompany: data.nameCompany,
           descriptionsCompany: data.descriptionsCompany,
           specialization: data.specialization,
@@ -70,7 +72,9 @@ export default function EditVacancy() {
         setErrorServer,
       });
       if (localStorage.getItem('resume')) {
-        router.push('/documents');
+        setTimeout(() => {
+          router.push('/documents');
+        }, 100);
       }
     }
   };
@@ -106,6 +110,13 @@ export default function EditVacancy() {
                               value={nameCompany}
                               onChange={(e) => setNameCompany(e.target.value)}
                               placeholder="Напишіть назву компанії"
+                              type="text"
+                            />
+                            <input
+                              {...register('webSite')}
+                              value={webSite}
+                              onChange={(e) => setWebSite(e.target.value)}
+                              placeholder="Силка на ваш сайт"
                               type="text"
                             />
                             <textarea
@@ -268,7 +279,7 @@ export default function EditVacancy() {
                         </div>
                         <div className={styles.item}>
                           <div className="input">
-                            <label className={styles.input__title}>Телеграм</label>
+                            <label className={styles.input__title}>Телефон</label>
                             <input
                               {...register('phone')}
                               value={phone}
@@ -277,7 +288,7 @@ export default function EditVacancy() {
                             />
                           </div>
                           <div className="input">
-                            <label className={styles.input__title}>LinkedIn</label>
+                            <label className={styles.input__title}>Телеграм</label>
                             <input
                               {...register('telegram')}
                               value={telegram}
@@ -286,7 +297,7 @@ export default function EditVacancy() {
                             />
                           </div>
                           <div className="input">
-                            <label className={styles.input__title}>Телефон</label>
+                            <label className={styles.input__title}>LinkedIn</label>
                             <input
                               {...register('linkedin')}
                               value={linkedin}

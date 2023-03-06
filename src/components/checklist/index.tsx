@@ -49,7 +49,7 @@ export const Checklist: FC<ChecklistProps> = ({ user }) => {
         <li className={profileActive === true ? styles.active : ''}>
           <Link href="/profile">Заповнити профіль</Link>
         </li>
-        <li className={localStorage.getItem('resume')?.length !== 1 ? styles.active : ''}>
+        <li className={localStorage.getItem('resume') ? styles.active : ''}>
           <Link href="/create">Зробити резюме</Link>
         </li>
         <li>

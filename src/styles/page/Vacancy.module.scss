@@ -1,0 +1,141 @@
+.hed {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 60px;
+
+  @media (max-width: 1440px) {
+    margin-bottom: 40px;
+  }
+
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 20px;
+    }
+  }
+
+  @media (max-width: 475px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  button {
+    padding: 10px 25px;
+    font-size: 20px;
+  }
+}
+
+.content {
+  height: 440px;
+  overflow-x: auto;
+  padding-right: 20px;
+  margin-bottom: 20px;
+
+  @media (max-width: 1440px) {
+    height: 360px;
+  }
+  @media (max-width: 768px) {
+    height: 500px;
+  }
+
+  @media (max-width: 475px) {
+    height: 380px;
+  }
+
+  .descriptions {
+    margin-bottom: 40px;
+  }
+  .subtext {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    color: rgba(30, 30, 30, 0.7);
+    margin-bottom: 20px;
+
+    @media (max-width: 768px) {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+  }
+  .text {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+    color: #1f1f1f;
+  }
+  li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+
+    p {
+      padding-right: 10px;
+    }
+  }
+  &__company {
+    display: flex;
+    align-items: center;
+
+    @media (max-width: 475px) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    p {
+      margin-bottom: 10px;
+      color: rgba(30, 30, 30, 0.7);
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      @media (max-width: 768px){
+        font-size: 14px;
+      }
+
+      span {
+        padding-left: 10px;
+        color: #1f1f1f;
+
+        @media (max-width: 768px){
+          font-size: 14px;
+        }
+      }
+      a {
+        padding-left: 10px;
+        color: #0a66c2;
+      }
+    }
+    .user {
+      margin-right: 50px;
+      display: flex;
+      align-content: center;
+
+      @media (max-width: 768px){
+        margin-right: 0;
+      }
+      @media (max-width: 475px){
+        margin-bottom: 20px;
+      }
+
+      img {
+        border-radius: 50%;
+      }
+
+      div {
+        margin-top: 5px;
+        margin-left: 10px;
+
+        @media (max-width: 768px){
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+  .city {
+    margin-top: 40px;
+  }
+}

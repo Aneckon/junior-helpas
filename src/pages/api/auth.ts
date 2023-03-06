@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { toast } from 'react-toastify';
 
 interface authProps {
   data: { email: string; nickname?: string; password: string };
@@ -16,16 +15,6 @@ export const auth = ({ data, link, setResponseServer, setErrorServer }: authProp
       password: data.password,
     })
     .then((response) => {
-      toast.success(`Успішно ${link === '/register' ? 'зареєструвалися' : 'увійшли'}`, {
-        position: 'top-right',
-        autoClose: 1000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: 'light',
-      });
       setResponseServer(response.data);
     })
     .catch((error) => {
@@ -36,11 +25,13 @@ export const auth = ({ data, link, setResponseServer, setErrorServer }: authProp
 export const logout = () => {
   axios
     .post(`${process.env.HOST_URL}/user/logout`, {
-      refreshToken: JSON.parse(localStorage.getItem('token') || '').refreshToken,
+      refreshToken:
+        localStorage.getItem('token')?.length &&
+        JSON.parse(localStorage.getItem('token') || '').refreshToken,
     })
     .then((response) => {
-      setTimeout(() => {
+      if (localStorage.getItem('token')) {
         localStorage.clear();
-      }, 100);
+      }
     });
 };

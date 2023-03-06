@@ -29,6 +29,7 @@ export default function CreateVacancy() {
 
   const [done, setDone] = React.useState(false);
 
+  const [webSite, setWebSite] = React.useState('');
   const [nameCompany, setNameCompany] = React.useState('');
   const [descriptionsCompany, setDescriptionsCompany] = React.useState('');
   const [specialization, setSpecialization] = React.useState('');
@@ -50,6 +51,7 @@ export default function CreateVacancy() {
           id: uuid(),
           userId: JSON.parse(localStorage.getItem('token') || '').userId,
           nameCompany: data.nameCompany,
+          webSite: data.webSite,
           descriptionsCompany: data.descriptionsCompany,
           specialization: data.specialization,
           experience: data.experience,
@@ -66,7 +68,9 @@ export default function CreateVacancy() {
         setErrorServer,
       });
       if (localStorage.getItem('resume')) {
-        router.push('/documents');
+        setTimeout(() => {
+          router.push('/documents');
+        }, 100);
       }
     }
   };
@@ -102,6 +106,13 @@ export default function CreateVacancy() {
                               value={nameCompany}
                               onChange={(e) => setNameCompany(e.target.value)}
                               placeholder="Напишіть назву компанії"
+                              type="text"
+                            />
+                            <input
+                              {...register('webSite')}
+                              value={webSite}
+                              onChange={(e) => setWebSite(e.target.value)}
+                              placeholder="Силка на ваш сайт"
                               type="text"
                             />
                             <textarea

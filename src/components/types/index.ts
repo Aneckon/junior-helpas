@@ -113,6 +113,7 @@ export interface InputVacancyProps {
   specialization: string;
   experience: string;
   salary: string;
+  webSite: string;
   briefDescription: string;
   detailedInformation: string;
   city: string;
@@ -127,6 +128,7 @@ export interface VacancyProps {
   data?: {
     id: string | undefined | string[];
     userId: string;
+    webSite: string;
     nameCompany: string;
     descriptionsCompany: string;
     specialization: string;
@@ -142,4 +144,17 @@ export interface VacancyProps {
     linkedin: string;
   };
   setErrorServer: (err: null) => void;
+}
+
+export interface VacancyItemProps {
+  telegram: string;
+  linkedin: string;
+  phone: string;
+  detailedInformation: string;
+  specialization: string;
+  nameCompany: string;
+  descriptionsCompany: string;
+  webSite: string;
+  briefDescription: string;
+  city: string;
 }

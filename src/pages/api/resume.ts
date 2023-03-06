@@ -47,7 +47,9 @@ export const getResume = (setErrorServer: (data: void) => void) => {
   axios
     .get(`${process.env.HOST_URL}/user/listresume/${userId.userId}`)
     .then((response) => {
-      localStorage.setItem('resume', JSON.stringify(response.data));
+      if (response.data.length) {
+        localStorage.setItem('resume', JSON.stringify(response.data));
+      }
     })
     .catch((error) => {
       setErrorServer(error.response?.data);

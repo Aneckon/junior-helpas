@@ -24,7 +24,11 @@ export const Provider = ({ user, setUser, children }: ProviderProps) => {
     }
     if (user === null) {
       setTimeout(() => {
-        setUser(JSON.parse(localStorage.getItem('user') || ''));
+        setUser(
+          localStorage.getItem('user')?.length
+            ? JSON.parse(localStorage.getItem('user') || '')
+            : null,
+        );
       }, 100);
     }
   }, [router, user]);
