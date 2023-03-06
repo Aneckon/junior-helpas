@@ -93,9 +93,7 @@ export const Sidebar: FC<SidebarProps> = ({ user }) => {
             </Link>
           </li>
           <li>
-            <Link
-              href="/vacantions"
-              className={router.asPath === '/vacantions' ? styles.active : ''}>
+            <Link href="/vacancy" className={router.asPath === '/vacantions' ? styles.active : ''}>
               <svg
                 width="28"
                 height="28"
