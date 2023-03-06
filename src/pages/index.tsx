@@ -26,7 +26,7 @@ export default function Home() {
             {user ? (
               <div className="container">
                 <h1 className="title">
-                  Вітаю <span>{user.nickname}</span>
+                  Вітаю {user.nickname}
                 </h1>
                 <div className={styles.content}>
                   <Checklist user={user} />
