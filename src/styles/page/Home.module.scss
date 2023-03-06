@@ -1,6 +1,7 @@
 .content {
   display: flex;
   justify-content: space-between;
+  align-items: flex-end;
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -11,7 +12,7 @@
       display: flex;
       justify-content: space-between;
     }
-    @media (max-width: 475px){
+    @media (max-width: 475px) {
       flex-direction: column-reverse;
     }
   }

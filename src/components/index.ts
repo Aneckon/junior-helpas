@@ -7,7 +7,6 @@ export * from './skillsItem';
 export * from './vacancyItem';
 
 export * from './checklist';
-export * from './reviews';
 export * from './whyUs';
 export * from './createItem';
 export * from './tabs';

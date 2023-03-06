@@ -6,10 +6,13 @@ import { ResumeProps } from '@/components/types';
 
 export const createResume = ({ setErrorServer, data }: ResumeProps) => {
   const userImage = JSON.parse(localStorage.getItem('user') || '').image;
+  const userId = JSON.parse(localStorage.getItem('token') || '');
+
   axios
     .post(
       `${process.env.HOST_URL}/user/createresume`,
       {
+        userId: userId.userId,
         image: userImage,
         email: JSON.parse(localStorage.getItem('user') || '').email,
         name: data?.name,
@@ -31,7 +34,20 @@ export const createResume = ({ setErrorServer, data }: ResumeProps) => {
     )
     .then((response) => {
       downloadjs(response.data, 'resume.pdf', 'text/plain');
-      localStorage.setItem('resume', JSON.stringify(response.config.data));
+      localStorage.removeItem('resume');
+    })
+    .catch((error) => {
+      setErrorServer(error.response?.data);
+    });
+};
+
+export const getResume = (setErrorServer: (data: void) => void) => {
+  const userId = JSON.parse(localStorage.getItem('token') || '');
+
+  axios
+    .get(`${process.env.HOST_URL}/user/listresume/${userId.userId}`)
+    .then((response) => {
+      localStorage.setItem('resume', JSON.stringify(response.data));
     })
     .catch((error) => {
       setErrorServer(error.response?.data);

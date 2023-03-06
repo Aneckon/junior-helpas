@@ -4,12 +4,15 @@ import Link from 'next/link';
 import { UserProps } from '../types';
 
 import styles from '@/styles/components/Checklist.module.scss';
+import { getResume } from '@/pages/api/resume';
 
 interface ChecklistProps {
   user: UserProps | null;
 }
 
 export const Checklist: FC<ChecklistProps> = ({ user }) => {
+  const [errorServer, setErrorServer] = React.useState<any>(null);
+
   const [profileActive, setProfileActive] = React.useState(false);
 
   React.useEffect(() => {
@@ -29,6 +32,11 @@ export const Checklist: FC<ChecklistProps> = ({ user }) => {
     } else {
       setProfileActive(false);
     }
+    if (user) {
+      if (!localStorage.getItem('resume')) {
+        getResume(setErrorServer);
+      }
+    }
   }, [user]);
 
   return (
@@ -41,7 +49,7 @@ export const Checklist: FC<ChecklistProps> = ({ user }) => {
         <li className={profileActive === true ? styles.active : ''}>
           <Link href="/profile">Заповнити профіль</Link>
         </li>
-        <li className={localStorage.getItem('resume')?.length ? styles.active : ''}>
+        <li className={localStorage.getItem('resume')?.length !== 1 ? styles.active : ''}>
           <Link href="/create">Зробити резюме</Link>
         </li>
         <li>

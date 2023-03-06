@@ -19,17 +19,14 @@ export default function Documents() {
   const [vacancy, setVacancy] = React.useState([]);
 
   React.useEffect(() => {
-    if (!localStorage.getItem('vacancy')) {
-      getVacancyItem();
-    }
     if (user || router) {
-      if (
-        localStorage.getItem('vacancy') ||
-        localStorage.getItem('vacancy')?.length ||
-        localStorage.getItem('vacancy-edit')?.length ||
-        localStorage.getItem('vacancy-edit')
-      ) {
-        setVacancy(JSON.parse(localStorage.getItem('vacancy') || ''));
+      if (!localStorage.getItem('vacancy')) {
+        getVacancyItem();
+      }
+      if (localStorage.getItem('vacancy')) {
+        setVacancy(
+          typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('vacancy') || '') : [],
+        );
       }
     }
   }, [user, router]);

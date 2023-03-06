@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 
-import { Checklist, Loader, Provider, Reviews, Sidebar, WhyUs } from '@/components';
+import { Checklist, Loader, Provider, Sidebar, WhyUs } from '@/components';
 import { UserProps } from '@/components/types';
 
 import styles from '@/styles/page/Home.module.scss';
@@ -31,7 +31,6 @@ export default function Home() {
                 <div className={styles.content}>
                   <Checklist user={user} />
                   <div className={styles.content__left}>
-                    <Reviews />
                     <WhyUs />
                   </div>
                 </div>
