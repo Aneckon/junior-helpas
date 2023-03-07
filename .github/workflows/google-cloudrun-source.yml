@@ -48,12 +48,12 @@ name: Deploy to Cloud Run from Source
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ['main']
 
 env:
   PROJECT_ID: junior-helpas # TODO: update Google Cloud project id
-  SERVICE: nextjs-app01-website # TODO: update Cloud Run service name
-  REGION: asia-northeast1 # TODO: update Cloud Run service region
+  SERVICE: junior-helpas # TODO: update Cloud Run service name
+  REGION: us-central1 # TODO: update Cloud Run service region
 
 jobs:
   deploy:
