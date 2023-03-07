@@ -96,3 +96,17 @@ export const editVacancy = ({ data, setErrorServer }: VacancyProps) => {
       setErrorServer(error.response?.data);
     });
 };
+
+export const getVacancyList = (
+  setErrorServer: (data: void) => void,
+  setVacancyList: (data: never[]) => void,
+) => {
+  axios
+    .get(`${process.env.HOST_URL}/vacation/list`)
+    .then((response) => {
+      setVacancyList(response.data);
+    })
+    .catch((error) => {
+      setErrorServer(error.response?.data);
+    });
+};

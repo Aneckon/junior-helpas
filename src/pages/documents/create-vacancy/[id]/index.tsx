@@ -67,11 +67,9 @@ export default function CreateVacancy() {
         },
         setErrorServer,
       });
-      if (localStorage.getItem('resume')) {
-        setTimeout(() => {
-          router.push('/documents');
-        }, 100);
-      }
+      setTimeout(() => {
+        router.push('/documents');
+      }, 100);
     }
   };
 
@@ -107,6 +105,7 @@ export default function CreateVacancy() {
                               onChange={(e) => setNameCompany(e.target.value)}
                               placeholder="Напишіть назву компанії"
                               type="text"
+                              required
                             />
                             <input
                               {...register('webSite')}
@@ -148,6 +147,7 @@ export default function CreateVacancy() {
                               value={specialization}
                               onChange={(e) => setSpecialization(e.target.value)}
                               type="text"
+                              required
                             />
                           </div>
                           <div className="input">

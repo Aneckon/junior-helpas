@@ -3,7 +3,7 @@ import Head from 'next/head';
 
 import { useRouter } from 'next/router';
 
-import { CreateItem, Loader, Provider, Sidebar, VacancyItem } from '@/components';
+import { CreateItem, Loader, Provider, Sidebar, CreateVacancyItem } from '@/components';
 import { getVacancyListItem, getVacancyItem } from '../api/vacancy';
 import { UserProps } from '@/components/types';
 
@@ -71,7 +71,7 @@ export default function Documents() {
                           nameCompany: string;
                           descriptionsCompany: string;
                         }) => (
-                          <VacancyItem
+                          <CreateVacancyItem
                             key={item.id}
                             vacancy={vacancy}
                             name={item.nameCompany}

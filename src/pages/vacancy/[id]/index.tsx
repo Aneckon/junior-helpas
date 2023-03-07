@@ -14,7 +14,7 @@ import styles from '@/styles/page/Vacancy.module.scss';
 
 import userAvatar from '@/assets/user.svg';
 
-export default function Vacancy() {
+export default function VacancyId() {
   const router = useRouter();
 
   const [errorServer, setErrorServer] = React.useState<any>(null);
@@ -37,14 +37,10 @@ export default function Vacancy() {
 
   React.useEffect(() => {
     if (router.query.id?.length) {
-      if (!localStorage.getItem('vacancy-item')) {
-        getVacancyItem(router.query.id);
-      }
-      if (!localStorage.getItem('vacancy-item-user')) {
-        setTimeout(() => {
-          getProfileVacancy({ setErrorServer });
-        }, 100);
-      }
+      getVacancyItem(router.query.id);
+      setTimeout(() => {
+        getProfileVacancy({ setErrorServer });
+      }, 100);
       if (localStorage.getItem('vacancy-item') && localStorage.getItem('vacancy-item-user')) {
         setVacancyItem(JSON.parse(localStorage.getItem('vacancy-item') || ''));
         setVacancyUser(JSON.parse(localStorage.getItem('vacancy-item-user') || ''));

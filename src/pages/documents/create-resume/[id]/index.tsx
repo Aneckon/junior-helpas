@@ -317,7 +317,6 @@ export default function CreateResumeId() {
                                 onChange={(e) => setPhone(e.target.value)}
                                 placeholder="Телефон"
                                 type="tel"
-                                required
                               />
                               <input
                                 {...register('telegram')}

@@ -4,6 +4,7 @@ export * from './loader';
 export * from './uploadAvatar';
 export * from './experienceItem';
 export * from './skillsItem';
+export * from './createVacancyItem';
 export * from './vacancyItem';
 
 export * from './checklist';
