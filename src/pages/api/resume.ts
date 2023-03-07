@@ -1,8 +1,7 @@
 import axios from 'axios';
 
-import downloadjs from 'downloadjs';
-
 import { ResumeProps } from '@/components/types';
+import fileDownload from 'js-file-download';
 
 export const createResume = ({ setErrorServer, data }: ResumeProps) => {
   const userImage = JSON.parse(localStorage.getItem('user') || '').image;
@@ -33,7 +32,7 @@ export const createResume = ({ setErrorServer, data }: ResumeProps) => {
       { responseType: 'blob' },
     )
     .then((response) => {
-      downloadjs(response.data, 'resume.pdf', 'text/plain');
+      fileDownload(response.data, 'resume.pdf');
       localStorage.removeItem('resume');
     })
     .catch((error) => {
