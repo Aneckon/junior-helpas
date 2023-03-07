@@ -57,7 +57,7 @@ export const Checklist: FC<ChecklistProps> = ({ user }) => {
         </li>
       </ul>
       <div className="link">
-        <Link href="">Додаткова інформація по пошуку роботи</Link>
+        <Link href="/info">Додаткова інформація по пошуку роботи</Link>
       </div>
     </div>
   );
